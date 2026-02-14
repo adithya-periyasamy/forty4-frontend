@@ -21,7 +21,7 @@ const UserDetails = () => {
       <div className="text-center py-12">
         <h2 className="text-2xl font-bold text-gray-800">User not found</h2>
         <Link
-          to="/dashboard"
+          to="/"
           className="text-blue-600 hover:underline mt-4 inline-block"
         >
           Back to Dashboard
@@ -34,7 +34,7 @@ const UserDetails = () => {
     <div>
       <div className="mb-6">
         <Link
-          to="/dashboard"
+          to="/"
           className="flex items-center text-gray-600 hover:text-gray-900 transition-colors w-fit"
         >
           <ArrowLeft className="mr-2 w-4 h-4" /> Back to Dashboard

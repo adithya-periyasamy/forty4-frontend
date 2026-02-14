@@ -2,7 +2,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { UserProvider } from "./context/UserContext";
 import Dashboard from "./pages/Dashboard";
-import Home from "./pages/Home";
 import UserDetails from "./pages/UserDetails";
 
 export default function App() {
@@ -12,14 +11,6 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              <Layout>
-                <Home />
-              </Layout>
-            }
-          />
-          <Route
-            path="/dashboard"
             element={
               <Layout>
                 <Dashboard />
