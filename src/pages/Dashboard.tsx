@@ -12,7 +12,7 @@ export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <div className="mb-8 flex flex-col sm:flex-row justify-between items-center">
+      <div className="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div>
           <SearchBar value={query} onChange={setQuery} />
         </div>

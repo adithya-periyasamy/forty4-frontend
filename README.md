@@ -1,73 +1,138 @@
-# React + TypeScript + Vite
+# 📊 User Dashboard — React Frontend Intern Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive **User Dashboard** web app built with **React**, **TypeScript**, and **Tailwind CSS**. It fetches user data from the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users), displays it in an interactive card layout, supports search/filtering, client-side user creation, and detailed user views — all managed through React Context for global state.
 
-Currently, two official plugins are available:
+### 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 **[https://forty4-frontend-assignment.vercel.app/](https://forty4-frontend-assignment.vercel.app/)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+| Requirement                              | Status |
+|------------------------------------------|--------|
+| Fetch & display users from API           | ✅      |
+| Card layout (name, email, phone, company)| ✅      |
+| Search / filter by name                  | ✅      |
+| "Create New User" form (client-side)     | ✅      |
+| Global state via React Context           | ✅      |
+| User Details page with React Router      | ✅      |
+| Full details (address & geo-location)    | ✅      |
+| Responsive / mobile-friendly design      | ✅      |
+| Functional components with hooks         | ✅      |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Technology          | Purpose                                  |
+|---------------------|------------------------------------------|
+| **React 19**        | UI library (functional components + hooks) |
+| **TypeScript**      | Static type safety                       |
+| **Vite**            | Build tool & dev server                  |
+| **Tailwind CSS v4** | Utility-first responsive styling         |
+| **React Router v7** | Client-side routing                      |
+| **React Hook Form** | Form state management                   |
+| **Zod**             | Schema validation for the create form    |
+| **Lucide React**    | Icon library                             |
+| **Fetch API**       | Data fetching from JSONPlaceholder       |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── Layout.tsx        # App shell with Navbar + main content area
+│   ├── Navbar.tsx        # Sticky top navigation bar
+│   ├── SearchBar.tsx     # Search input with icon
+│   ├── SkeletonCard.tsx  # Loading skeleton placeholder
+│   ├── UseForm.tsx       # Modal form for creating a new user
+│   ├── UserCard.tsx      # Individual user card component
+│   └── UserList.tsx      # Grid of user cards with loading/error states
+├── context/
+│   └── UserContext.tsx   # React Context provider (fetch, add, lookup)
+├── hooks/
+│   └── useSearch.ts      # Generic debounced search hook
+├── pages/
+│   ├── Dashboard.tsx     # Main dashboard page
+│   └── UserDetails.tsx   # Detailed user profile page
+├── types/
+│   └── UserTypes.ts      # TypeScript interfaces (User, Address, Company, Geo)
+├── App.tsx               # Router setup and route definitions
+├── main.tsx              # Application entry point
+└── index.css             # Tailwind import + base font
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/<your-username>/forty4-frontend.git
+cd forty4-frontend
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
 ```
+
+The app will be available at **http://localhost:5173**.
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview   # Preview the production build locally
+```
+
+---
+
+## 📖 Usage
+
+### Dashboard (`/`)
+
+- **User Cards** — Displays all users fetched from `https://jsonplaceholder.typicode.com/users` in a responsive 3-column grid (adapts to 2 on tablets, 1 on mobile).
+- **Search** — Type in the search bar to filter users by name in real-time (debounced at 300 ms).
+- **Create User** — Click the **"Create User"** button to open a modal form. Fill in at least a name and email (validated with Zod), then submit to add the user to the dashboard. The new user is stored client-side via React Context.
+- **View Details** — Click **"View Details →"** on any card to navigate to the user's full profile.
+
+### User Details (`/user/:id`)
+
+- Shows the user's **full name**, **username**, **email**, **phone**, and **website**.
+- Displays **company information** including name, catch phrase, and business focus.
+- Shows the **full address** (street, suite, city, zip) alongside **geo-location** coordinates (latitude & longitude).
+- **Back** link to return to the Dashboard.
+
+---
+
+## 🎯 Key Implementation Details
+
+- **React Context** (`UserContext.tsx`) manages the global user list, loading / error states, and exposes `addUser` and `getUserById` helpers — no prop drilling needed.
+- **Custom `useSearch` hook** provides a generic, debounced search that filters any array by a given key. It uses `useRef` for timer cleanup and `useMemo` for performance.
+- **Form validation** uses **React Hook Form** + **Zod** schema resolver for declarative, type-safe validation with clear error messages.
+- **Skeleton loading cards** provide visual feedback while API data is being fetched.
+- **Responsive design** is achieved entirely with Tailwind CSS utility classes using Flexbox and CSS Grid breakpoints (`sm:`, `md:`, `lg:`).
+
+---
+
+## 📜 Available Scripts
+
+| Command            | Description                            |
+|--------------------|----------------------------------------|
+| `npm run dev`      | Start the Vite dev server with HMR     |
+| `npm run build`    | Type-check with TSC and build for prod |
+| `npm run preview`  | Preview the production build locally   |
+| `npm run lint`     | Run ESLint across the project          |
