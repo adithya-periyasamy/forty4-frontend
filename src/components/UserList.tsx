@@ -1,6 +1,6 @@
 import React from "react";
 import type { User } from "../types/UserTypes";
-import SkeletonCard from "./SkeletonBar";
+import SkeletonCard from "./SkeletonCard";
 import UserCard from "./UserCard";
 
 interface UserListProps {
